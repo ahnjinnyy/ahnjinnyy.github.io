@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>우리 가족 소개</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Nanum Gothic', sans-serif;
+      background: linear-gradient(135deg, #fff0f6 0%, #f0f4ff 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #e75480;
+      margin-bottom: 32px;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    h1 span {
+      font-size: 1.6rem;
+    }
+
+    /* 탭 버튼 */
+    .tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .tab-btn {
+      padding: 12px 36px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      background: #fff;
+      color: #aaa;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .tab-btn.active-chulsoo {
+      background: linear-gradient(135deg, #74b9ff, #0984e3);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(9,132,227,0.35);
+      transform: translateY(-2px);
+    }
+
+    .tab-btn.active-younghee {
+      background: linear-gradient(135deg, #fd79a8, #e84393);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(232,67,147,0.35);
+      transform: translateY(-2px);
+    }
+
+    /* 카드 */
+    .card {
+      display: none;
+      background: #fff;
+      border-radius: 28px;
+      padding: 40px 36px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      animation: fadeIn 0.35s ease;
+    }
+
+    .card.visible { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 아바타 */
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      margin: 0 auto 20px;
+    }
+
+    .avatar-chulsoo {
+      background: linear-gradient(135deg, #dfe6e9, #b2bec3);
+    }
+
+    .avatar-younghee {
+      background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+    }
+
+    .name {
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .name-chulsoo { color: #0984e3; }
+    .name-younghee { color: #e84393; }
+
+    .quote {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #888;
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+
+    /* 정보 항목 */
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #f9f9fb;
+      border-radius: 14px;
+      padding: 14px 18px;
+    }
+
+    .info-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .info-label {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-bottom: 2px;
+    }
+
+    .info-value {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1><span>👨‍👩‍👦</span> 우리 가족 소개</h1>
+
+  <div class="tabs">
+    <button class="tab-btn active-chulsoo" id="btn-chulsoo" onclick="showTab('chulsoo')">🧑 철수</button>
+    <button class="tab-btn" id="btn-younghee" onclick="showTab('younghee')">👧 영희</button>
+  </div>
+
+  <!-- 철수 카드 -->
+  <div class="card visible" id="card-chulsoo">
+    <div class="avatar avatar-chulsoo">🧑</div>
+    <div class="name name-chulsoo">김철수</div>
+    <div class="quote">"열심히 사는 게 나의 모토!"</div>
+    <div class="info-list">
+      <div class="info-item">
+        <div class="info-icon">🎂</div>
+        <div>
+          <div class="info-label">나이 / 생일</div>
+          <div class="info-value">28세 · 1998년 3월 15일</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🎮</div>
+        <div>
+          <div class="info-label">취미 / 관심사</div>
+          <div class="info-value">게임, 등산, 독서</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🍖</div>
+        <div>
+          <div class="info-label">좋아하는 음식</div>
+          <div class="info-value">삼겹살, 짜장면</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">💬</div>
+        <div>
+          <div class="info-label">한마디</div>
+          <div class="info-value">가족이 최고야! 언제나 응원해요 😊</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 영희 카드 -->
+  <div class="card" id="card-younghee">
+    <div class="avatar avatar-younghee">👧</div>
+    <div class="name name-younghee">김영희</div>
+    <div class="quote">"매일 조금씩 성장하고 싶어요 🌱"</div>
+    <div class="info-list">
+      <div class="info-item">
+        <div class="info-icon">🎂</div>
+        <div>
+          <div class="info-label">나이 / 생일</div>
+          <div class="info-value">25세 · 2001년 7월 22일</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🎨</div>
+        <div>
+          <div class="info-label">취미 / 관심사</div>
+          <div class="info-value">그림 그리기, 카페 탐방, 요리</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🍰</div>
+        <div>
+          <div class="info-label">좋아하는 음식</div>
+          <div class="info-value">떡볶이, 케이크</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">💬</div>
+        <div>
+          <div class="info-label">한마디</div>
+          <div class="info-value">우리 가족, 사랑해요! 항상 행복하자 💕</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showTab(name) {
+      // 카드 전환
+      document.getElementById('card-chulsoo').classList.remove('visible');
+      document.getElementById('card-younghee').classList.remove('visible');
+      document.getElementById('card-' + name).classList.add('visible');
+
+      // 탭 버튼 스타일
+      const btnC = document.getElementById('btn-chulsoo');
+      const btnY = document.getElementById('btn-younghee');
+      btnC.className = 'tab-btn';
+      btnY.className = 'tab-btn';
+
+      if (name === 'chulsoo') {
+        btnC.classList.add('active-chulsoo');
+      } else {
+        btnY.classList.add('active-younghee');
+      }
+    }
+  </script>
+
+</body>
+</html>
